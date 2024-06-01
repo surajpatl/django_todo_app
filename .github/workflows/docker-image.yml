@@ -14,5 +14,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-pythonapp:$(date +%s)
+      run: docker build . --file Dockerfile --tag my-pythonapp:latest
+
+    - name: Tag the Docker image
+      run: docker tag my-pythonapp:latest my-dockerhub-username/my-pythonapp:latest
+
+    - name: Push the Docker image
+      run: docker push my-dockerhub-username/my-pythonapp:latest
