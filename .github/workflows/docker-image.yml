@@ -18,13 +18,13 @@ jobs:
 
     - name: Build the Docker image
       id: build-image
-      run: docker build . --file Dockerfile --tag my-pythonapp:${{ github.run_number }}
+      run: docker build . --file Dockerfile --tag my-pythonapp:latest
 
     - name: Tag the Docker image
-      run: docker tag my-pythonapp:${{ github.run_number }} hassanb111/my-pythonapp:${{ github.run_number }}
+      run: docker tag my-pythonapp:latest hassanb111/my-pythonapp:latest
 
     - name: Push the Docker image
-      run: docker push hassanb111/my-pythonapp:${{ github.run_number }}
+      run: docker push hassanb111/my-pythonapp:latest
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@0e613a0980cbf65ed5b322eb7a1e075d28913a83
@@ -39,7 +39,7 @@ jobs:
       with:
         task-definition:  ".aws/task-definition.json"
         container-name:  "webapp"
-        image: hassanb111/my-pythonapp:${{ github.run_number }}
+        image: hassanb111/my-pythonapp:latest
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@df9643053eda01f169e64a0e60233aacca83799a
