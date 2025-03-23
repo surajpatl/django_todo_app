@@ -1,1 +1,124 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/logo192.png"/><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"><link rel="manifest" href="/manifest.json"/><title>Shandaar APP</title><link href="/static/css/main.dbf46efa.chunk.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script>!function(e){function r(r){for(var n,f,l=r[0],i=r[1],a=r[2],c=0,s=[];c<l.length;c++)f=l[c],Object.prototype.hasOwnProperty.call(o,f)&&o[f]&&s.push(o[f][0]),o[f]=0;for(n in i)Object.prototype.hasOwnProperty.call(i,n)&&(e[n]=i[n]);for(p&&p(r);s.length;)s.shift()();return u.push.apply(u,a||[]),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,l=1;l<t.length;l++){var i=t[l];0!==o[i]&&(n=!1)}n&&(u.splice(r--,1),e=f(f.s=t[0]))}return e}var n={},o={1:0},u=[];function f(r){if(n[r])return n[r].exports;var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,f),t.l=!0,t.exports}f.m=e,f.c=n,f.d=function(e,r,t){f.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},f.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},f.t=function(e,r){if(1&r&&(e=f(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(f.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)f.d(t,n,function(r){return e[r]}.bind(null,n));return t},f.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return f.d(r,"a",r),r},f.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},f.p="/";var l=this.webpackJsonpfrontend=this.webpackJsonpfrontend||[],i=l.push.bind(l);l.push=r,l=l.slice();for(var a=0;a<l.length;a++)r(l[a]);var p=i;t()}([])</script><script src="/static/js/2.2004f6e8.chunk.js"></script><script src="/static/js/main.7d96cbac.chunk.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shreya's Study Planner</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f3f4f6;
+      color: #333;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    h1 {
+      color: #4CAF50;
+    }
+    .study-card {
+      margin-bottom: 30px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .task {
+      display: flex;
+      align-items: center;
+    }
+    .task input[type="checkbox"] {
+      margin-right: 10px;
+    }
+    .btn-danger {
+      background-color: #e74c3c;
+    }
+    .btn-primary {
+      background-color: #3498db;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1 class="text-center mb-4">Shreya's Study Planner</h1>
+
+    <div class="study-card">
+      <h3>Welcome, Shreya!</h3>
+      <p>Let's plan your study sessions for today and stay productive.</p>
+      <form id="study-form">
+        <div class="form-group">
+          <label for="subject">Choose Subject:</label>
+          <select class="form-control" id="subject">
+            <option>Math</option>
+            <option>Science</option>
+            <option>English</option>
+            <option>History</option>
+            <option>Computer Science</option>
+            <option>Biology</option>
+            <option>Geography</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="study-time">Study Time:</label>
+          <input type="text" class="form-control" id="study-time" placeholder="e.g., 2 hours">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Study Task</button>
+      </form>
+    </div>
+
+    <div class="study-card">
+      <h3>Your Study Tasks</h3>
+      <ul id="task-list" class="list-group">
+        <!-- Tasks will be added here -->
+      </ul>
+    </div>
+
+  </div>
+
+  <script>
+    const form = document.getElementById('study-form');
+    const taskList = document.getElementById('task-list');
+
+    // Adding a task to the list when the form is submitted
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const subject = document.getElementById('subject').value;
+      const studyTime = document.getElementById('study-time').value;
+
+      if (studyTime === "") {
+        alert("Please enter study time.");
+        return;
+      }
+
+      const li = document.createElement('li');
+      li.classList.add('list-group-item');
+      li.classList.add('d-flex');
+      li.classList.add('justify-content-between');
+      li.classList.add('align-items-center');
+
+      li.innerHTML = `
+        <div class="task">
+          <input type="checkbox" id="task-checkbox">
+          <span><strong>${subject}</strong>: ${studyTime}</span>
+        </div>
+        <button class="btn btn-danger btn-sm" onclick="removeTask(this)">Remove</button>
+      `;
+
+      taskList.appendChild(li);
+      form.reset();
+    });
+
+    // Function to remove a task
+    function removeTask(button) {
+      button.parentElement.remove();
+    }
+  </script>
+
+</body>
+
+</html>
