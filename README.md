@@ -2,5 +2,5 @@
 A demo app for React and Django Deployment
 
 #This is test for github webhook
-docker-compose down
+docker-compose down #this commnd for docker down
 docker-compose up -d
